@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollabProj.Server", "CollabProj.Server\CollabProj.Server.csproj", "{72DC91E2-568C-4725-BE51-264B112A09FE}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "collabproj.client", "collabproj.client\collabproj.client.esproj", "{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72DC91E2-568C-4725-BE51-264B112A09FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72DC91E2-568C-4725-BE51-264B112A09FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72DC91E2-568C-4725-BE51-264B112A09FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72DC91E2-568C-4725-BE51-264B112A09FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99283558-6813-480E-8889-2B2C21C079D3}
+	EndGlobalSection
+EndGlobal
