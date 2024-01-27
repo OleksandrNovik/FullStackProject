@@ -1,56 +1,27 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EditProfile from './components/EditProfile/EditProfile';
+import Register from './components/Register/Register';
+import Header from './components/UI/Header/Header';
+import Profile from './components/Profile/Profile';
+import LogIn from './components/LogIn/LogIn';
+import Home from './components/Home/Home';
 
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
-
-function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+export default function App() {
 
     return (
+    <Router>
         <div>
-            <h1 id="tabelLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/logIn" element={<LogIn />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/editProfile" element={<EditProfile />} />
+            </Routes>
         </div>
+    </Router>
     );
 
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
 }
-
-export default App;
