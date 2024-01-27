@@ -1,4 +1,5 @@
 import FeaturedItem from '../UI/FeaturedItem/FeaturedItem';
+import { Link } from 'react-router-dom';
 import Footer from '../UI/Footer/Footer';
 import './Home.css'; 
 
@@ -25,7 +26,7 @@ export default function Home() {
             <section className="cta-section">
                 <h2>Ready to Get Started?</h2>
                 <p>Join our community and start your learning journey today.</p>
-                <button className="cta-button">Sign Up Now</button>
+                <Link to="/register"><button className="cta-button">Sign Up Now</button></Link>
             </section>
             <Footer />
         </div>
