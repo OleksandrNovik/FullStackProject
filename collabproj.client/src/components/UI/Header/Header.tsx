@@ -21,7 +21,10 @@ export default function Header() {
                     </ul>
                 </nav>
             </div>
-            <div className="profileIcon" style={{ backgroundColor: '#e3e3e3', borderRadius: '50px' }}></div>
+            <div className="search-container">
+                <input type="search" className="search-input" placeholder="Search here" name="search" id="search-input" />
+            </div>
+            <div className="profileIcon"></div>
         </div>
     );
 }
