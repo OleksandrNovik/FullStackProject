@@ -1,6 +1,6 @@
 import { memo } from 'react';
+import Featured from '../../../commonTypes/Featured';
 import './FeaturedItem.css'; 
-import Featured from '../../../commontypes/Featured';
 
 function FeaturedItem({topic, description} : Featured) {
     return (
