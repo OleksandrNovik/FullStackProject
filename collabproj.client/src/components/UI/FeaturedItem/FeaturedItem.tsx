@@ -1,18 +1,14 @@
-import React from 'react';
+import { memo } from 'react';
 import './FeaturedItem.css'; 
+import Featured from '../../../commontypes/Featured';
 
-interface Featured {
-    topic: string,
-    description: string,
-}
-
-const FeaturedItem = React.memo(function FeaturedItem({topic, description} : Featured) {
+function FeaturedItem({topic, description} : Featured) {
     return (
         <div className="featured-item">
             <h3>{topic}</h3>
             <p>{description}</p>
         </div>
     );
-})
+}
 
-export default FeaturedItem;
+export default memo(FeaturedItem);

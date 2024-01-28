@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import EditProfile from './components/EditProfile/EditProfile';
-import Register from './components/Register/Register';
-import Header from './components/UI/Header/Header';
-import Profile from './components/Profile/Profile';
-import LogIn from './components/LogIn/LogIn';
-import Home from './components/Home/Home';
+import EditProfile from './components/EditProfile';
+import Register from './components/Register';
+import Header from './components/UI/Header';
+import Profile from './components/Profile';
+import LogIn from './components/LogIn';
+import Home from './components/Home';
+import './App.css';
 
 export default function App() {
 

@@ -1,6 +1,6 @@
-import FeaturedItem from '../UI/FeaturedItem/FeaturedItem';
+import FeaturedItem from '../UI/FeaturedItem';
 import { Link } from 'react-router-dom';
-import Footer from '../UI/Footer/Footer';
+import Footer from '../UI/Footer';
 import './Home.css'; 
 
 export default function Home() {
