@@ -1,5 +1,6 @@
-import Topic from "../../commonTypes/Topic";
 import TopicLibraryItem from "./TopicLibraryItem";
+import Topic from "../../commonTypes/Topic";
+import './TopicLibrary.css';
 
 interface TopicLibraryProps {
     // List of topics to show

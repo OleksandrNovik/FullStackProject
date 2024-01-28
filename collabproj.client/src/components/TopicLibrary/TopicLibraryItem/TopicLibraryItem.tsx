@@ -1,7 +1,8 @@
 import { memo, useState } from "react";
-import TopicLibrary from "..";
-import Topic from "../../../commonTypes/Topic";
 import TopicItemContent from "./TopicItemContent";
+import Topic from "../../../commonTypes/Topic";
+import TopicLibrary from "..";
+import './TopicLibraryItem.css'
 
 interface TopicLibraryItemProps {
     // Shown topic by this list item

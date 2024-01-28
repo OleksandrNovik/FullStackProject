@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import EditProfile from './components/EditProfile';
+import EditProfile from './components/Profile/EditProfile';
+import TopicLibrary from './components/TopicLibrary';
 import Register from './components/Register';
 import Header from './components/UI/Header';
 import Profile from './components/Profile';
@@ -19,7 +20,8 @@ export default function App() {
                 <Route path="/logIn" element={<LogIn />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/editProfile" element={<EditProfile />} />
+                <Route path="/edit-profile" element={<EditProfile />} />
+                <Route path="/topic-library" element={<TopicLibrary isEditable={false} />} />
             </Routes>
         </div>
     </Router>

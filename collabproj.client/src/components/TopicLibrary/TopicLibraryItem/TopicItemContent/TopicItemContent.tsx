@@ -1,3 +1,5 @@
+import './TopicItemContent.css';
+
 interface TopicItemContentProps {
     // Is content editable or readonly
     isEditable:boolean;
