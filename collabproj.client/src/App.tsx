@@ -1,56 +1,71 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+import TopicLibrary from './components/TopicLibrary';
 
 function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
-    return (
-        <div>
-            <h1 id="tabelLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
-        </div>
-    );
-
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
+    const arr = [
+        {
+            id: 1,
+            name: "Programming Basics",
+            subTopics: [
+                {
+                    id: 2,
+                    name: "Introduction to Programming",
+                },
+                {
+                    id: 3,
+                    name: "Variables and Data Types",
+                },
+                {
+                    id: 4,
+                    name: "Control Flow (if statements, loops)",
+                },
+                {
+                    id: 5,
+                    name: "Functions and Methods",
+                },
+            ],
+        },
+        {
+            id: 6,
+            name: "Language-Specific Concepts",
+            subTopics: [
+                {
+                    id: 7,
+                    name: "Introduction to TypeScript/JavaScript/Python/etc.",
+                },
+                {
+                    id: 8,
+                    name: "Data Structures",
+                },
+                {
+                    id: 11,
+                    name: "Functions and Closures",
+                },
+            ],
+        },
+        {
+            id: 12,
+            name: "Advanced Programming Concepts",
+            subTopics: [
+                {
+                    id: 13,
+                    name: "Object-Oriented Programming (OOP)",
+                },
+                {
+                    id: 14,
+                    name: "Design Patterns",
+                },
+                {
+                    id: 15,
+                    name: "Error Handling and Exceptions",
+                },
+            ],
+        },
+    ];
+    return <div>
+        <TopicLibrary topics={arr} isEditable={true} />
+        <button>Save</button>
+    </div>
 }
 
 export default App;
