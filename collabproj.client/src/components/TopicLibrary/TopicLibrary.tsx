@@ -12,6 +12,8 @@ interface TopicLibraryProps {
 // It is reused to view list of subtopics (if there are any) for each topic
 function TopicLibrary({topics, isEditable}:TopicLibraryProps) {
 
+    // Зробити оболочку під субтопік
+
     return <>
         {topics && 
             <ul style={{listStyle: 'decimal', textAlign: 'left'}}>
