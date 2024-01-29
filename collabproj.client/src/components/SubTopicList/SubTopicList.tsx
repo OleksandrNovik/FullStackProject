@@ -5,7 +5,7 @@ interface SubTopicListProps {
     // Subtopics that will be displayed
     items:Topic[];
 }
-// List for subtopics to handle references to a specific place in a topic
+// List of subtopics to handle references to a specific place in a topic
 function SubTopicList({items}:SubTopicListProps) {
     return <ul>
         {
