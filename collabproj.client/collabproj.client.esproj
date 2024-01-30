@@ -13,5 +13,6 @@
     <Folder Include="src\components\EditProfile\" />
     <Folder Include="src\components\Register\" />
     <Folder Include="src\components\LogIn\" />
+    <Folder Include="src\validators\" />
   </ItemGroup>
 </Project>
