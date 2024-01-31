@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './TopicItemContent.css';
 
 interface TopicItemContentProps {
@@ -13,11 +13,13 @@ interface TopicItemContentProps {
 // In this representation topic can be shown as it is or with additional options
 // Edit topic and its subtopics or delete topic from the library
 function TopicItemContent({isEditable, id, title}:TopicItemContentProps) {
+
+    const navigate = useNavigate();
     
     return <>
         <Link to={`/topic-library/view/${id}`}>{title}</Link>
         {isEditable && <div>
-                        <button>ed</button> 
+                        <button onClick={() => navigate(`/topic-library/edit/${id}`)}>ed</button> 
                         <button>del</button>
                     </div> }
     </>

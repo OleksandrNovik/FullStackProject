@@ -1,4 +1,6 @@
 import TopicElementInfo from "../../../commonTypes/TopicElementInfo";
+import TopicContentItem from "./TopicContentItem/TopicContentItem";
+import TopicSectionSelector from "./TopicContentItem/TopicSectionSelector";
 
 interface TopicContentProps {
     items: TopicElementInfo[];
@@ -8,8 +10,8 @@ interface TopicContentProps {
 function TopicContentSection({items, isEditable}:TopicContentProps) {
     //TODO: items is temporary, topic id should be provided
     return <div>
-        { items.map(item => <div>{item.innerText}</div>) }
-        { isEditable && <button>+</button> }
+        { items.map(item => <TopicContentItem key={item.id} item={item} isEditable={isEditable} />) }
+        { isEditable && <TopicSectionSelector /> }
     </div>
 }
 

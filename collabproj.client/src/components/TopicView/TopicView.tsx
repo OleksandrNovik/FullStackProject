@@ -7,10 +7,21 @@ interface TopicViewProps {
 }
 
 function TopicView({topic, isEditable}:TopicViewProps) {
+
     return <div>
-        { isEditable ? <h3> {topic.name} </h3> : <input /> }
-        <TopicContentSection items={[]} isEditable={false} />
-        {isEditable && <button> Save changes </button>}
+        { isEditable ?  <input /> : <h1> {topic.name} </h1> }
+        <TopicContentSection items={[
+            {
+                id: 1, type: 'header', innerText: 'HELLO'
+            },
+            {
+                id: 2, type: 'text', innerText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsum nam eligendi. Labore magnam, dolorum, quos suscipit obcaecati officiis nihil vero ea commodi ut omnis? Eum, minima? Minus, facere sed?'
+            },
+            {
+                id: 2, type: 'code', innerText: 'function Play() {}'
+            }
+        ]} isEditable={isEditable} />
+        { isEditable && <button> Save changes </button> }
     </div>
 }
 

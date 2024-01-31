@@ -1,9 +1,14 @@
 import TopicElementInfo, { topicTypeMap } from "../../../../commonTypes/TopicElementInfo";
 
-function TopicContentItem ({id, type, innerText}:TopicElementInfo) {
+interface TopicContentItemProps {
+    item: TopicElementInfo;
+    isEditable: boolean;
+}
 
-    const ContentType = topicTypeMap[type];
-    return <ContentType key={id} innerText={innerText} />;
+function TopicContentItem ({item, isEditable}:TopicContentItemProps) {
+
+    const ContentType = topicTypeMap[item.type];
+    return <ContentType innerText={item.innerText} isEditable={isEditable} />;
 }
 
 export default TopicContentItem;

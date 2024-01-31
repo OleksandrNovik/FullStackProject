@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import LogIn from './components/LogIn';
 import Home from './components/Home';
 import './App.css';
+import TopicView from './components/TopicView';
 
 const arr = [
     {
@@ -83,8 +84,8 @@ export default function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/edit-profile" element={<EditProfile />} />
                 <Route path='/topic-library/:id' element={<TopicLibrary topics={arr} isEditable={false} />} />
-                    <Route path='/topic-library/view/:id' element={<div>View</div>} />
-                    <Route path='/topic-library/edit/:id' element={<div>Edit</div>} />
+                    <Route path='/topic-library/view/:id' element={<TopicView isEditable={false} topic={arr[0]} />} />
+                    <Route path='/topic-library/edit/:id' element={<TopicView isEditable topic={arr[0]} />} />
                 <Route path='/edit-topic-library/:id' element={<TopicLibrary topics={arr} isEditable />} />
 
 
