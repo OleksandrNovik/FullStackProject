@@ -83,10 +83,10 @@ export default function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/edit-profile" element={<EditProfile />} />
-                <Route path='/topic-library/:id' element={<TopicLibrary topics={arr} isEditable={false} />} />
+                <Route path='/topic-library/:id' element={<TopicLibrary title='First course' topics={arr} isEditable={false} />} />
                     <Route path='/topic-library/view/:id' element={<TopicView isEditable={false} topic={arr[0]} />} />
                     <Route path='/topic-library/edit/:id' element={<TopicView isEditable topic={arr[0]} />} />
-                <Route path='/edit-topic-library/:id' element={<TopicLibrary topics={arr} isEditable />} />
+                <Route path='/edit-topic-library/:id' element={<TopicLibrary title='First course' topics={arr} isEditable />} />
 
 
             </Routes>

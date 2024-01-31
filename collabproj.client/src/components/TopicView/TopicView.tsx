@@ -5,11 +5,13 @@ interface TopicViewProps {
     isEditable: boolean;
     topic: Topic;
 }
-
+// Component to show the topic and all the content it has
 function TopicView({topic, isEditable}:TopicViewProps) {
 
+    // Title of topic can be editable or readonly
     return <div>
         { isEditable ?  <input /> : <h1> {topic.name} </h1> }
+        {/* Each topic has content section to show all headers, text section or other staff */}
         <TopicContentSection items={[
             {
                 id: 1, type: 'header', innerText: 'HELLO'
