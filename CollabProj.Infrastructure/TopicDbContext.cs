@@ -35,11 +35,11 @@ namespace CollabProj.Infrastructure
         /// <summary>
         /// Database Set of Users
         /// </summary>
-        DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         /// <summary>
         /// Database Set of User Photos
         /// </summary>
-        DbSet<UserPhoto> UserPhotos { get; set; }
+        public DbSet<UserPhoto> UserPhotos { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace CollabProj.Domain.Entities.User
         /// Unique identifier for the user.
         /// </summary>
         [Key]
-        [Required]
         [Column("id")]
         public int Id { get; set; }
 
@@ -59,7 +58,7 @@ namespace CollabProj.Domain.Entities.User
         /// <summary>
         /// Mapping property for UserPhoto (One-To-One relationship)
         /// </summary>
-        public virtual UserPhoto? UserPhoto { get; set; }
+        public UserPhoto? UserPhoto { get; set; }
     }
 
     /// <summary>
