@@ -19,7 +19,7 @@ namespace CollabProj.Infrastructure
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserPhoto)
                 .WithOne(up => up.User)
-                .HasForeignKey<UserPhoto>(up => up.ID);
+                .HasForeignKey<UserPhoto>(up => up.Id);
 
             //Implementation of password hashing
             modelBuilder.Entity<User>()
