@@ -1,5 +1,8 @@
-using CollabProj.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using DbContext = CollabProj.Infrastructure.TopicDbContext;
+using Presentation = CollabProj.Server.DependencyInjection;
+using Application = CollabProj.Application.DependencyInjection;
+using Infrastructure = CollabProj.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<TopicDbContext>(
+Application.DependencyInjector(builder.Services);
+Presentation.DependencyInjector(builder.Services);
+Infrastructure.DependencyInjector(builder.Services);
+
+builder.Services.AddDbContext<DbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDbConnection"))
 );
 
