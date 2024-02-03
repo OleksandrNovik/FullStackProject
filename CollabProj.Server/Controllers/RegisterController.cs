@@ -10,7 +10,7 @@ namespace CollabProj.Server.Controllers
     /// Controller for handling Register Requests
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class RegisterController : ControllerBase
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace CollabProj.Server.Controllers
         private readonly IUserService _userService;
 
         /// <summary>
-        /// Constructor for RegisterController
+        /// Constructor for Register Controller
         /// </summary>
         /// <param name="userService">User Service</param>
         public RegisterController(IUserService userService)
@@ -35,7 +35,7 @@ namespace CollabProj.Server.Controllers
         [HttpPost]
         public async Task<RegisterErrorModel> Post([FromBody] UserModel model)
         {
-            Log.Information("Post request has been made for registration of user");
+            Log.Information("POST request has been made for registration of user");
 
             Log.Information("Model, retrieved from body: {@model}", model);
 
@@ -69,7 +69,5 @@ namespace CollabProj.Server.Controllers
 
             return errors;
         }
-
-        //TODO: Add Verification email
     }
 }

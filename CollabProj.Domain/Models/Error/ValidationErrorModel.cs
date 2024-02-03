@@ -1,14 +1,14 @@
 ﻿namespace CollabProj.Domain.Models.Error
 {
     /// <summary>
-    /// Error Model for Register Form
+    /// Error Model for Validation Code Form
     /// </summary>
-    public class RegisterErrorModel
+    public class ValidationErrorModel
     {
         /// <summary>
-        /// Email Error of register form.
+        /// Validation Code Error of Validation form.
         /// </summary>
-        public string? EmailError { get; set; }
+        public string? ValidationCodeError { get; set; }
 
         /// <summary>
         /// Indicator of successful form submittion
