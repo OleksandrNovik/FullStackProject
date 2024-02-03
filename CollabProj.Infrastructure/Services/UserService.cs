@@ -3,11 +3,7 @@ using CollabProj.Application.Interfaces.Services;
 using CollabProj.Domain.Entities.User;
 using CollabProj.Domain.Models.User;
 using CollabProj.Infrastructure.Mappers.UserRelated;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace CollabProj.Infrastructure.Services
 {
@@ -43,9 +39,17 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Completed Task</returns>
         public async Task CreateUserAsync(UserModel model)
         {
-            var userMapper = new UserMapper();
+            Log.Information("Retrieved User Model for database creation: {@model}", model);
+
+            Log.Warning("Mapping User Model to User Entity...");
 
             var user = _userMapper.UserModelToUser(model);
+
+            Log.Information("User Model successfully mapped to User Entity");
+
+            Log.Information("Mapped User Entity: {@user}", user);
+
+            Log.Information("Transferring data to the repository...");
 
             await _repository.CreateAsync(user);
         }
@@ -57,7 +61,15 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Mapped User Model</returns>
         public async Task<UserModel> GetUserByIdAsync(int id)
         {
+            Log.Information("Id for retrieving User from database: {@id}", id);
+
+            Log.Information("Transferring data to the repository...");
+
             var user = await _repository.GetByIdAsync(id);
+
+            Log.Information("User Entity was received from repository: {@user}",  user);
+
+            Log.Warning("Mapping User Entity to User Model...");
 
             return _userMapper.UserToUserModel(user);
         }
@@ -69,7 +81,15 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Mapped User Model</returns>
         public async Task<UserModel> GetUserByEmailAsync(string email)
         {
+            Log.Information("Email for retrieving User from database: {@email}", email);
+
+            Log.Information("Transferring data to the repository...");
+
             var user = await _repository.GetByEmailAsync(email);
+
+            Log.Information("User Entity was received from repository: {@user}", user);
+
+            Log.Warning("Mapping User Entity to User Model...");
 
             return _userMapper.UserToUserModel(user);
         }
@@ -81,7 +101,15 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Mapped User Model</returns>
         public async Task<UserModel> GetUserWithPhotoByIdAsync(int id)
         {
+            Log.Information("Id for retrieving User with photo from database: {@id}", id);
+
+            Log.Information("Transferring data to the repository...");
+
             var user = await _repository.GetWithPhotoByIdAsync(id);
+
+            Log.Information("User Entity with photo was received from repository: {@user}", user);
+
+            Log.Warning("Mapping User Entity with photo to User Model with photo...");
 
             return _userMapper.UserToUserModel(user);
         }
@@ -93,7 +121,15 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Mapped User Model</returns>
         public async Task<UserModel> GetUserWithPhotoByEmailAsync(string email)
         {
+            Log.Information("Email for retrieving User with photo from database: {@email}", email);
+
+            Log.Information("Transferring data to the repository...");
+
             var user = await _repository.GetWithPhotoByEmailAsync(email);
+
+            Log.Information("User Entity with photo was received from repository: {@user}", user);
+
+            Log.Warning("Mapping User Entity with photo to User Model with photo...");
 
             return _userMapper.UserToUserModel(user);
         }
@@ -105,6 +141,11 @@ namespace CollabProj.Infrastructure.Services
         public async Task<List<UserModel>> GetAllUsersAsync()
         {
             var userList = await _repository.GetAllAsync();
+
+            Log.Information("Retrieved List of Users from database: {@userList}", userList);
+
+            Log.Warning("Mapping User Entities List to User Model List...");
+
             return userList.Select(user => _userMapper.UserToUserModel(user)).ToList();
         }
 
@@ -115,7 +156,14 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>List of Mapped User Models</returns>
         public async Task<List<UserModel>> GetAllUsersByRoleAsync(Role role)
         {
+            Log.Information("Transferring data to the repository...");
+
             var userList = await _repository.GetAllByRoleAsync(role);
+
+            Log.Information("Retrieved List of Users by role from database: {@userList}", userList);
+
+            Log.Warning("Mapping User Entities List to User Model List...");
+
             return userList.Select(user => _userMapper.UserToUserModel(user)).ToList();
         }
 
@@ -126,7 +174,18 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Completed Task</returns>
         public async Task UpdateUserAsync(UserModel model)
         {
+            Log.Information("Retrieved User Model for database updating: {@model}", model);
+
+            Log.Warning("Mapping User Model to User Entity...");
+
             var user = _userMapper.UserModelToUser(model);
+
+            Log.Information("User Model successfully mapped to User Entity");
+
+            Log.Information("Mapped User Entity: {@user}", user);
+
+            Log.Information("Transferring data to the repository...");
+
             await _repository.UpdateAsync(user);
         }
 
@@ -137,6 +196,10 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>Completed Task</returns>
         public async Task DeleteUserAsync(int id)
         {
+            Log.Information("Id for removing User from database: {@id}", id);
+
+            Log.Information("Transferring data to the repository...");
+
             await _repository.DeleteAsync(id);
         }
     }
