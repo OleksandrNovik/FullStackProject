@@ -3,16 +3,11 @@
     /// <summary>
     /// Error Model for Validation Code Form
     /// </summary>
-    public class ValidationErrorModel
+    public class ValidationErrorModel : ErrorModel
     {
         /// <summary>
-        /// Validation Code Error of Validation form.
+        /// Validation Code Error of Validation Form.
         /// </summary>
         public string? ValidationCodeError { get; set; }
-
-        /// <summary>
-        /// Indicator of successful form submittion
-        /// </summary>
-        public bool Success { get; set; }
     }
 }
