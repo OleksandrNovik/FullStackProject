@@ -47,9 +47,14 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Information("User Model successfully mapped to User Entity");
 
+            Log.Information("Setting up user's Creation and Last Login Date...");
+
+            user.CreationDate = DateTime.Now;
+            user.LastLoginDate = DateTime.Now;
+
             Log.Information("Mapped User Entity: {@user}", user);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             await _repository.CreateAsync(user);
         }
@@ -63,7 +68,7 @@ namespace CollabProj.Infrastructure.Services
         {
             Log.Information("Id for retrieving User from database: {@id}", id);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             var user = await _repository.GetByIdAsync(id);
 
@@ -83,7 +88,7 @@ namespace CollabProj.Infrastructure.Services
         {
             Log.Information("Email for retrieving User from database: {@email}", email);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             var user = await _repository.GetByEmailAsync(email);
 
@@ -103,7 +108,7 @@ namespace CollabProj.Infrastructure.Services
         {
             Log.Information("Id for retrieving User with photo from database: {@id}", id);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             var user = await _repository.GetWithPhotoByIdAsync(id);
 
@@ -123,7 +128,7 @@ namespace CollabProj.Infrastructure.Services
         {
             Log.Information("Email for retrieving User with photo from database: {@email}", email);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             var user = await _repository.GetWithPhotoByEmailAsync(email);
 
@@ -156,7 +161,7 @@ namespace CollabProj.Infrastructure.Services
         /// <returns>List of Mapped User Models</returns>
         public async Task<List<UserModel>> GetAllUsersByRoleAsync(Role role)
         {
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             var userList = await _repository.GetAllByRoleAsync(role);
 
@@ -184,7 +189,7 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Information("Mapped User Entity: {@user}", user);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             await _repository.UpdateAsync(user);
         }
@@ -198,7 +203,7 @@ namespace CollabProj.Infrastructure.Services
         {
             Log.Information("Id for removing User from database: {@id}", id);
 
-            Log.Information("Transferring data to the repository...");
+            Log.Debug("Transferring data to the repository...");
 
             await _repository.DeleteAsync(id);
         }
