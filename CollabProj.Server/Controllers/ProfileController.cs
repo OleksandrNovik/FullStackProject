@@ -31,7 +31,7 @@ namespace CollabProj.Server.Controllers
         /// </summary>
         /// <param name="id">User id</param>
         /// <returns>User Model</returns>
-        [HttpGet("[:id]")]
+        [HttpGet("{id}")]
         public async Task<UserModel> Get(int id)
         {
             Log.Information("GET request has been made for user profile model");
@@ -53,8 +53,8 @@ namespace CollabProj.Server.Controllers
         /// <param name="file">Image</param>
         /// <param name="model">User Model</param>
         /// <returns>Completed Task</returns>
-        [HttpPost("[action]")]
-        public async Task ChangeImage([FromBody] IFormFile file, [FromBody] UserModel model)
+        [HttpPost("[action]/{id}")]
+        public async Task ChangeImage([FromBody] IFormFile file, int id)
         {
             //TODO: Add Image saving
         }
