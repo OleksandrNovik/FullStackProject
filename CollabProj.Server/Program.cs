@@ -3,8 +3,14 @@ using DbContext = CollabProj.Infrastructure.TopicDbContext;
 using Presentation = CollabProj.Server.DependencyInjection;
 using Application = CollabProj.Application.DependencyInjection;
 using Infrastructure = CollabProj.Infrastructure.DependencyInjection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Initialization of Serilog Logger
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
 
 // Add services to the container.
 

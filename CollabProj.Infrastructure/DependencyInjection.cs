@@ -3,6 +3,7 @@ using CollabProj.Application.Interfaces.Services;
 using CollabProj.Infrastructure.Repositories;
 using CollabProj.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace CollabProj.Infrastructure
 {
@@ -12,7 +13,7 @@ namespace CollabProj.Infrastructure
         {
             service.AddScoped<IUserRepository, UserRepository>();
             service.AddScoped<IUserService, UserService>();
-            Console.WriteLine("Added Dependencies for Infrastructure");
+            Log.Debug("Added Dependencies for Infrastructure");
         }
     }
 }

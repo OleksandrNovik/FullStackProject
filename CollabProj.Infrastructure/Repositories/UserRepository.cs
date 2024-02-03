@@ -1,6 +1,7 @@
 ﻿using CollabProj.Application.Interfaces.Repositories;
 using CollabProj.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace CollabProj.Infrastructure.Repositories
 {
@@ -30,9 +31,15 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>Completed Task</returns>
         public async Task CreateAsync(User user)
         {
+            Log.Warning("Adding User: {@user}", user);
+
             await _context.Users.AddAsync(user);
 
+            Log.Warning("User is created. Saving changes into database...");
+
             await _context.SaveChangesAsync();
+
+            Log.Information("User successfully added");
         }
 
         /// <summary>
@@ -42,6 +49,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>User, which has this Id</returns>
         public async Task<User> GetByIdAsync(int id)
         {
+            Log.Warning("Getting user by id from database: {@id}", id);
+
             return await _context.Users
                                 .FirstAsync(user => user.Id == id);
         }
@@ -53,6 +62,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>User, which has this Email</returns>
         public async Task<User> GetByEmailAsync(string email)
         {
+            Log.Warning("Getting user by email from database: {@email}", email);
+
             return await _context.Users
                                 .FirstAsync(user => user.Email == email);
         }
@@ -64,6 +75,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>User, which has this Id</returns>
         public async Task<User> GetWithPhotoByIdAsync(int id)
         {
+            Log.Warning("Getting user with photo by id from database: {@id}", id);
+
             return await _context.Users
                                 .Include(u => u.UserPhoto)
                                 .FirstAsync(user => user.Id == id);
@@ -76,6 +89,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>User, which has this Email</returns>
         public async Task<User> GetWithPhotoByEmailAsync(string email)
         {
+            Log.Warning("Getting user with photo by email from database: {@email}", email);
+
             return await _context.Users
                                 .Include(u => u.UserPhoto)
                                 .FirstAsync(user => user.Email == email);
@@ -87,6 +102,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>List of all users</returns>
         public async Task<List<User>> GetAllAsync()
         {
+            Log.Warning("Getting every User from database...");
+
             return await _context.Users
                                 .Include(u => u.UserPhoto)
                                 .ToListAsync();
@@ -99,6 +116,8 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>List of all users, which has this Role</returns>
         public async Task<List<User>> GetAllByRoleAsync(Role role)
         {
+            Log.Warning("Getting every User by role from database...");
+
             return await _context.Users
                                 .Include(u => u.UserPhoto)
                                 .Where(user => user.RoleType == role)
@@ -112,9 +131,15 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>Completed Task</returns>
         public async Task UpdateAsync(User user)
         {
+            Log.Warning("Updating user: {@user}", user);
+
             _context.Users.Update(user);
 
+            Log.Warning("User is updated. Saving changes into database...");
+
             await _context.SaveChangesAsync();
+
+            Log.Information("User successfully updated");
         }
 
         /// <summary>
@@ -124,11 +149,21 @@ namespace CollabProj.Infrastructure.Repositories
         /// <returns>Completed Task</returns>
         public async Task DeleteAsync(int id)
         {
+            Log.Warning("Deleting user with id: {@id}", id);
+
             var user = await _context.Users.FirstAsync(user => user.Id == id);
+
+            Log.Information("User queued for removal has been found in database");
+
+            Log.Warning("Removing user from database...");
 
             _context.Users.Remove(user);
 
+            Log.Warning("User is removed. Saving changes into database...");
+
             await _context.SaveChangesAsync();
+
+            Log.Information("User successfully removed");
         }
     }
 }
