@@ -21,6 +21,8 @@ namespace CollabProj.Infrastructure
 
             service.AddScoped<IUserService, UserService>();
 
+            service.AddScoped<IEmailSenderService, EmailSenderService>();
+
             service.AddScoped<ICodeGenerationService, CodeGenerationService>();
 
             Log.Debug("Services successfully injected");
