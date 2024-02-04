@@ -64,9 +64,14 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Information("Formed Serialized User model: {@modelString}", modelString);
 
-            Log.Debug("Caching User model...");
+            Log.Debug("Caching User model for 30 minutes...");
 
-            await _distributedCache.SetStringAsync(key, modelString);
+            var cacheOptions = new DistributedCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30),
+            };
+
+            await _distributedCache.SetStringAsync(key, modelString, cacheOptions);
 
             Log.Information("User model was successfully cached");
         }
@@ -113,9 +118,14 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Information("Formed Serialized Validation Code: {@codeString}", codeString);
 
-            Log.Debug("Caching Verification Code...");
+            Log.Debug("Caching Verification Code for 30 minutes...");
 
-            await _distributedCache.SetStringAsync(key, codeString);
+            var cacheOptions = new DistributedCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30),
+            };
+
+            await _distributedCache.SetStringAsync(key, codeString, cacheOptions);
 
             Log.Information("Verification Code was successfully cached");
         }

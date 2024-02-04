@@ -19,12 +19,19 @@ namespace CollabProj.Server.Controllers
         private readonly IUserService _userService;
 
         /// <summary>
+        /// Service for handling actions related with caching
+        /// </summary>
+        private readonly ICachingService _cachingService;
+
+        /// <summary>
         /// Constructor for Register Controller
         /// </summary>
         /// <param name="userService">User Service</param>
-        public RegisterController(IUserService userService)
+        /// <param name="cachingService">Caching Service</param>
+        public RegisterController(IUserService userService, ICachingService cachingService)
         {
             _userService = userService;
+            _cachingService = cachingService;
         }
 
         /// <summary>
@@ -55,7 +62,7 @@ namespace CollabProj.Server.Controllers
 
                 Log.Debug("Transferring data to Caching Service...");
 
-                await _userService.CreateUserAsync(model);
+                await _cachingService.AddUserModelToCache(model);
 
                 Log.Information("User has been cached. Returning Success...");
 
