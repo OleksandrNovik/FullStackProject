@@ -56,7 +56,46 @@ namespace CollabProj.Server.Controllers
         [HttpPatch("[action]/{username}")]
         public async Task ChangeImage([FromBody] IFormFile file, string username)
         {
-            //TODO: Add Image saving
+            Log.Information("PATCH request has been made for change of user's data");
+
+            Log.Information("Username, retrieved from URL: {@username}", username);
+
+            Log.Debug("Creating unique file name...");
+
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+
+            Log.Information("Unique file name: {@uniqueFileName}", uniqueFileName);
+
+            Log.Debug("Combining filepath...");
+
+            var filePath = Path.Combine("images", uniqueFileName);
+
+            Log.Information("File path: {@filePath}", filePath);
+
+            Log.Warning("Writing file...");
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+
+            Log.Information("File successfully written");
+
+            Log.Debug("Transferring data to User Service...");
+
+            var model = await _userService.GetUserWithPhotoByUsernameAsync(username);
+
+            Log.Information("Model: {@model}", model);
+
+            Log.Debug("Changing image url...");
+
+            model.UserPhotoModel = new UserPhotoModel() { PhotoURL = $"/images/{uniqueFileName}" };
+
+            Log.Debug("Transferring data to User Service...");
+
+            await _userService.UpdateUserAsync(model);
+
+            Log.Information("User has been successfully updated");
         }
 
         /// <summary>
@@ -65,7 +104,7 @@ namespace CollabProj.Server.Controllers
         /// <param name="model">Updated User Model</param>
         /// <returns>Completed Task</returns>
         [HttpPatch("[action]")]
-        public async Task ChangeUsername([FromBody] UserModel model)
+        public async Task ChangeData([FromBody] UserModel model)
         {
             Log.Information("PATCH request has been made for change of user's data");
 
