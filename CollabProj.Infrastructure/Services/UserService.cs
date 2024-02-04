@@ -100,6 +100,26 @@ namespace CollabProj.Infrastructure.Services
         }
 
         /// <summary>
+        /// Implementation of method for getting User Entity without photo by username from database and mapping it into Model
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>Mapped User Model</returns>
+        public async Task<UserModel> GetUserByUsernameAsync(string username)
+        {
+            Log.Information("Username for retrieving User from database: {@username}", username);
+
+            Log.Debug("Transferring data to the repository...");
+
+            var user = await _repository.GetByUsernameAsync(username);
+
+            Log.Information("User Entity was received from repository: {@user}", user);
+
+            Log.Warning("Mapping User Entity to User Model...");
+
+            return _userMapper.UserToUserModel(user);
+        }
+
+        /// <summary>
         /// Implementation of method for getting User Entity with photo by id from database and mapping it into Model
         /// </summary>
         /// <param name="id">User's id</param>
@@ -131,6 +151,26 @@ namespace CollabProj.Infrastructure.Services
             Log.Debug("Transferring data to the repository...");
 
             var user = await _repository.GetWithPhotoByEmailAsync(email);
+
+            Log.Information("User Entity with photo was received from repository: {@user}", user);
+
+            Log.Warning("Mapping User Entity with photo to User Model with photo...");
+
+            return _userMapper.UserToUserModel(user);
+        }
+
+        /// <summary>
+        /// Implementation of method for getting User Entity with photo by username from database and mapping it into Model
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>Mapped User Model</returns>
+        public async Task<UserModel> GetUserWithPhotoByUsernameAsync(string username)
+        {
+            Log.Information("Username for retrieving User with photo from database: {@username}", username);
+
+            Log.Debug("Transferring data to the repository...");
+
+            var user = await _repository.GetWithPhotoByUsernameAsync(username);
 
             Log.Information("User Entity with photo was received from repository: {@user}", user);
 

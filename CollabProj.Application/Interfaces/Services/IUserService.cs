@@ -30,6 +30,13 @@ namespace CollabProj.Application.Interfaces.Services
         public Task<UserModel> GetUserByEmailAsync(string email);
 
         /// <summary>
+        /// Method for getting User Entity without photo by username from database and mapping it into Model
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>Mapped User Model</returns>
+        public Task<UserModel> GetUserByUsernameAsync(string username);
+
+        /// <summary>
         /// Method for getting User Entity with photo by id from database and mapping it into Model
         /// </summary>
         /// <param name="id">User's id</param>
@@ -42,6 +49,13 @@ namespace CollabProj.Application.Interfaces.Services
         /// <param name="email">User's email</param>
         /// <returns>Mapped User Model</returns>
         public Task<UserModel> GetUserWithPhotoByEmailAsync(string email);
+
+        /// <summary>
+        /// Method for getting User Entity with photo by username from database and mapping it into Model
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>Mapped User Model</returns>
+        public Task<UserModel> GetUserWithPhotoByUsernameAsync(string username);
 
         /// <summary>
         /// Method for getting List of User Entities with photos from database and mapping it into List of User Models

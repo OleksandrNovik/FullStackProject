@@ -69,6 +69,19 @@ namespace CollabProj.Infrastructure.Repositories
         }
 
         /// <summary>
+        /// Implementation of method for getting user without photo by username from database
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>User, which has this Username</returns>
+        public async Task<User> GetByUsernameAsync(string username)
+        {
+            Log.Warning("Getting user by username from database: {@username}", username);
+
+            return await _context.Users
+                                .FirstAsync(user => user.Username == username);
+        }
+
+        /// <summary>
         /// Implementation of method for getting user with photo by id from database
         /// </summary>
         /// <param name="id">User's Id</param>
@@ -94,6 +107,20 @@ namespace CollabProj.Infrastructure.Repositories
             return await _context.Users
                                 .Include(u => u.UserPhoto)
                                 .FirstAsync(user => user.Email == email);
+        }
+
+        /// <summary>
+        /// Implementation of method for getting user with photo by username from database
+        /// </summary>
+        /// <param name="username">User's username</param>
+        /// <returns>User, which has this Username</returns>
+        public async Task<User> GetWithPhotoByUsernameAsync(string username)
+        {
+            Log.Warning("Getting user with photo by username from database: {@username}", username);
+
+            return await _context.Users
+                                .Include(u => u.UserPhoto)
+                                .FirstAsync(user => user.Username == username);
         }
 
         /// <summary>

@@ -15,7 +15,6 @@ namespace CollabProj.Infrastructure.Mappers.UserRelated
         /// </summary>
         /// <param name="user">User Entity</param>
         /// <returns>User Model</returns>
-        [MapperIgnoreSourceValue(nameof(User.Id))]
         [MapperIgnoreSourceValue(nameof(User.UserPhoto.Id))]
         [MapProperty(nameof(User.UserPhoto), nameof(UserModel.UserPhotoModel))]
         public partial UserModel UserToUserModel(User user);
@@ -25,7 +24,6 @@ namespace CollabProj.Infrastructure.Mappers.UserRelated
         /// </summary>
         /// <param name="model">User Model</param>
         /// <returns>User Entity</returns>
-        [MapperIgnoreTargetValue(nameof(User.Id))]
         [MapperIgnoreTargetValue(nameof(User.UserPhoto.Id))]
         [MapProperty(nameof(UserModel.UserPhotoModel), nameof(User.UserPhoto))]
         public partial User UserModelToUser(UserModel model);

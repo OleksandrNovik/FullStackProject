@@ -13,6 +13,10 @@ namespace CollabProj.Domain.Models.User
     public class UserModel
     {
         /// <summary>
+        /// Id for user
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// Username for user.
         /// </summary>
         public string Username { get; set; }

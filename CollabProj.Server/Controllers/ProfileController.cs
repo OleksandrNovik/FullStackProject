@@ -51,7 +51,7 @@ namespace CollabProj.Server.Controllers
         /// Method for handling image change
         /// </summary>
         /// <param name="file">Image</param>
-        /// <param name="model">User Model</param>
+        /// <param name="id">User Id</param>
         /// <returns>Completed Task</returns>
         [HttpPost("[action]/{id}")]
         public async Task ChangeImage([FromBody] IFormFile file, int id)
