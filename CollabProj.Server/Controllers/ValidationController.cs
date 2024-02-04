@@ -1,4 +1,6 @@
 ﻿using CollabProj.Application.Interfaces.Services;
+using CollabProj.Application.Interfaces.Services.Email;
+using CollabProj.Application.Interfaces.Services.VerificationCode;
 using CollabProj.Domain.Models.Error;
 using CollabProj.Domain.Models.User;
 using Microsoft.AspNetCore.Mvc;
@@ -19,30 +21,46 @@ namespace CollabProj.Server.Controllers
         private readonly IUserService _userService;
 
         /// <summary>
+        /// Service for handling actions related with cache
+        /// </summary>
+        private readonly ICachingService _cachingService;
+
+        /// <summary>
+        /// Service for handling actions associated with verification code
+        /// </summary>
+        private readonly IVerificationCodeService _verificationCodeService;
+
+        /// <summary>
         /// Constructor for Validation Controller
         /// </summary>
         /// <param name="userService">User Service</param>
-        public ValidationController(IUserService userService)
+        /// <param name="verificationCodeService">Verification Code Service</param>
+        public ValidationController(IUserService userService, ICachingService cachingService, IVerificationCodeService verificationCodeService)
         {
             _userService = userService;
+            _cachingService = cachingService;
+            _verificationCodeService = verificationCodeService;
         }
 
         /// <summary>
         /// Method for getting user for validation and sending code to him
         /// </summary>
-        /// <param name="id">User id</param>
+        /// <param name="username">User's username</param>
         /// <returns>Errors or Successful adding of user</returns>
-        [HttpGet("{id}")]
-        public async Task<UserModel> GetValidation(int id)
+        [HttpGet("{username}")]
+        public async Task<UserModel?> GetValidation(string username)
         {
             Log.Information("GET request has been made for user validation");
 
-            Log.Information("Id, retrieved from URL: {@id}", id);
+            Log.Information("Username, retrieved from URL: {@username}", username);
 
-            Log.Debug("Transferring data to User Service...");
+            Log.Debug("Transferring data into Verification Code Service...");
 
-            var model = await _userService.GetUserByIdAsync(id);
-            //TODO: Add code generation
+            var model = await _verificationCodeService.SendVerificationCode(username);
+
+            Log.Information("Model: {@model}", model);
+
+            Log.Information("Verification code has been cached and sent");
 
             return model;
         }
@@ -50,14 +68,16 @@ namespace CollabProj.Server.Controllers
         /// <summary>
         /// Method for Validation of Code, which user entered
         /// </summary>
-        /// <param name="validationCode">Validation Code</param>
+        /// <param name="verificationCode">Verification Code</param>
         /// <returns>Errors or Successful validation of user</returns>
-        [HttpPost("[action]")]
-        public async Task<ValidationErrorModel> ValidateCode([FromBody] int validationCode)
+        [HttpPost("[action]/{username}")]
+        public async Task<ValidationErrorModel> ValidateCode([FromBody] int verificationCode, string username)
         {
-            Log.Information("POST request has been made for validation code submittion");
+            Log.Information("POST request has been made for verification code submittion");
 
-            Log.Information("Code, retrieved from body: {@model}", validationCode);
+            Log.Information("Code, retrieved from body: {@verificationCode}", verificationCode);
+
+            Log.Information("Username, retrieved from URL: {@username}", username);
 
             Log.Debug("Initialization of Validation Error Model for further processing of data");
 
@@ -65,17 +85,50 @@ namespace CollabProj.Server.Controllers
 
             Log.Information("Checking code....");
 
-            //TODO: Add code check
-            if (false)
+            Log.Debug("Transferring data into Verification Code Service...");
+
+            bool? isValid = await _verificationCodeService.IsVerificationCodeValid(username, verificationCode);
+
+            if (isValid is true)
             {
                 Log.Information("Validation Code is Valid");
+
+                Log.Debug("Transferring data into Verification Code Service...");
+
+                var model = await _cachingService.GetUserModelFromCache($"Model-{username}");
+
+                Log.Information("Model: {@model}", model);
+
+                Log.Debug("Transferring data into Verification Code Service...");
+
+                await _verificationCodeService.RemoveDataFromCache(username);
+
+                Log.Information("Data Removed from Cache");
+
+                Log.Debug("Transferring data into User Service...");
+
+                await _userService.CreateUserAsync(model);
+
+                Log.Information("User added to database");
+
                 return errors;
             }
 
             Log.Information("Code isn't Valid. Setting up errors...");
 
+            string errorText = "Validation Code isn't correct. Try again";
+
+            if (isValid is null)
+            {
+                var model = _verificationCodeService.SendVerificationCode(username);
+
+                errorText = model is null ?
+                    "Verification period expired. Register account again"
+                    : "Verification code has been resent on your email";
+            }
+
             errors.Success = false;
-            errors.ValidationCodeError = "Validation Code isn't correct. Try again";
+            errors.ValidationCodeError = errorText;
 
             Log.Information("Errors: {@errors}", errors);
 

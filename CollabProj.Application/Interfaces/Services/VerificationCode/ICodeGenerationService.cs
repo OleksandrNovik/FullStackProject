@@ -1,4 +1,4 @@
-﻿namespace CollabProj.Application.Interfaces.Services
+﻿namespace CollabProj.Application.Interfaces.Services.VerificationCode
 {
     /// <summary>
     /// Service Interface for Code Generation Service

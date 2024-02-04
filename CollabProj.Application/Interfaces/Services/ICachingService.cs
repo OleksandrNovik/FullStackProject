@@ -35,5 +35,12 @@ namespace CollabProj.Application.Interfaces.Services
         /// <param name="verificationCode">6-digit Verification Code</param>
         /// <returns>Completed Task</returns>
         public Task AddVerificationCodeToCache(string username, int verificationCode);
+
+        /// <summary>
+        /// Method for removing Item from cache
+        /// </summary>
+        /// <param name="key">Key of Item</param>
+        /// <returns>Completed Task</returns>
+        public Task RemoveItemFromCache(string key);
     }
 }

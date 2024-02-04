@@ -1,4 +1,6 @@
-﻿using CollabProj.Application.Interfaces.Services.Email;
+﻿using CollabProj.Application.Interfaces.Services.VerificationCode;
+using CollabProj.Infrastructure.Services.VerificationCode;
+using CollabProj.Application.Interfaces.Services.Email;
 using CollabProj.Application.Interfaces.Repositories;
 using CollabProj.Application.Interfaces.Services;
 using CollabProj.Infrastructure.Services.Email;
@@ -30,6 +32,8 @@ namespace CollabProj.Infrastructure
             service.AddScoped<IEmailTemplateService, EmailTemplateService>();
 
             service.AddScoped<ICodeGenerationService, CodeGenerationService>();
+
+            service.AddScoped<IVerificationCodeService, VerificationCodeService>();
 
             Log.Debug("Services successfully injected");
 

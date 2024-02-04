@@ -1,7 +1,7 @@
-﻿using CollabProj.Application.Interfaces.Services;
+﻿using CollabProj.Application.Interfaces.Services.VerificationCode;
 using Serilog;
 
-namespace CollabProj.Infrastructure.Services
+namespace CollabProj.Infrastructure.Services.VerificationCode
 {
     /// <summary>
     /// Service implementation for code generation

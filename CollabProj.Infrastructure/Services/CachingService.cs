@@ -129,5 +129,19 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Information("Verification Code was successfully cached");
         }
+
+        /// <summary>
+        /// Implementation of method for removing Item from cache
+        /// </summary>
+        /// <param name="key">Key of Item</param>
+        /// <returns>Completed Task</returns>
+        public async Task RemoveItemFromCache(string key)
+        {
+            Log.Information("Passed key for removing Item: {@key}", key);
+
+            Log.Debug("Removing Item from distributed cache...");
+
+            await _distributedCache.RemoveAsync(key);
+        }
     }
 }
