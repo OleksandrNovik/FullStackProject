@@ -46,39 +46,39 @@ namespace CollabProj.Infrastructure.Repositories
         /// Implementation of method for getting user without photo by id from database
         /// </summary>
         /// <param name="id">User's Id</param>
-        /// <returns>User, which has this Id</returns>
-        public async Task<User> GetByIdAsync(int id)
+        /// <returns>User, which has this Id or null if user wasn't found</returns>
+        public async Task<User?> GetByIdAsync(int id)
         {
             Log.Warning("Getting user by id from database: {@id}", id);
 
             return await _context.Users
-                                .FirstAsync(user => user.Id == id);
+                                .FirstOrDefaultAsync(user => user.Id == id);
         }
 
         /// <summary>
         /// Implementation of method for getting user without photo by email from database
         /// </summary>
         /// <param name="email">User's email</param>
-        /// <returns>User, which has this Email</returns>
-        public async Task<User> GetByEmailAsync(string email)
+        /// <returns>User, which has this Email or null if user wasn't found</returns>
+        public async Task<User?> GetByEmailAsync(string email)
         {
             Log.Warning("Getting user by email from database: {@email}", email);
 
             return await _context.Users
-                                .FirstAsync(user => user.Email == email);
+                                .FirstOrDefaultAsync(user => user.Email == email);
         }
 
         /// <summary>
         /// Implementation of method for getting user without photo by username from database
         /// </summary>
         /// <param name="username">User's username</param>
-        /// <returns>User, which has this Username</returns>
-        public async Task<User> GetByUsernameAsync(string username)
+        /// <returns>User, which has this Username or null if user wasn't found</returns>
+        public async Task<User?> GetByUsernameAsync(string username)
         {
             Log.Warning("Getting user by username from database: {@username}", username);
 
             return await _context.Users
-                                .FirstAsync(user => user.Username == username);
+                                .FirstOrDefaultAsync(user => user.Username == username);
         }
 
         /// <summary>

@@ -43,17 +43,21 @@ namespace CollabProj.Server.Controllers
 
             var errors = new RegisterErrorModel() { Success = true };
 
-            Log.Information("Checking if Email is already registered...");
+            Log.Information("Checking if Email is unique and username is unique...");
 
-            if (await _userService.GetUserByEmailAsync(model.Email) is null)
+            bool isEmailUnique = await _userService.GetUserByEmailAsync(model.Email) is null;
+
+            bool isUsernameUnique = await _userService.GetUserByUsernameAsync(model.Username) is null;
+
+            if (isEmailUnique && isUsernameUnique)
             {
                 Log.Information("Register has been granted");
 
-                Log.Debug("Transferring data to User Service...");
+                Log.Debug("Transferring data to Caching Service...");
 
                 await _userService.CreateUserAsync(model);
 
-                Log.Information("User has been created and added. Returning Success...");
+                Log.Information("User has been cached. Returning Success...");
 
                 return errors;
             }
@@ -61,7 +65,8 @@ namespace CollabProj.Server.Controllers
             Log.Information("User hasn't been created. Setting up errors...");
 
             errors.Success = false;
-            errors.EmailError = "This email is already registered to other account";
+            errors.EmailError = !isEmailUnique ? "This email is already registered to other account" : "";
+            errors.UsernameError = !isUsernameUnique ? "This username is already taken by other user" : "";
 
             Log.Information("Errors: {@errors}", errors);
 

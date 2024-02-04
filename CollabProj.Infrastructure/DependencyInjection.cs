@@ -23,6 +23,8 @@ namespace CollabProj.Infrastructure
 
             service.AddScoped<IUserService, UserService>();
 
+            service.AddScoped<ICachingService, CachingService>();
+
             service.AddScoped<IEmailSenderService, EmailSenderService>();
 
             service.AddScoped<IEmailTemplateService, EmailTemplateService>();

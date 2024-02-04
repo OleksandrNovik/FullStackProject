@@ -63,8 +63,8 @@ namespace CollabProj.Infrastructure.Services
         /// Implementation of method for getting User Entity without photo by id from database and mapping it into Model
         /// </summary>
         /// <param name="id">User's id</param>
-        /// <returns>Mapped User Model</returns>
-        public async Task<UserModel> GetUserByIdAsync(int id)
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public async Task<UserModel?> GetUserByIdAsync(int id)
         {
             Log.Information("Id for retrieving User from database: {@id}", id);
 
@@ -76,15 +76,15 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Warning("Mapping User Entity to User Model...");
 
-            return _userMapper.UserToUserModel(user);
+            return user is not null ? _userMapper.UserToUserModel(user) : null;
         }
 
         /// <summary>
         /// Implementation of method for getting User Entity without photo by email from database and mapping it into Model
         /// </summary>
         /// <param name="email">User's email</param>
-        /// <returns>Mapped User Model</returns>
-        public async Task<UserModel> GetUserByEmailAsync(string email)
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public async Task<UserModel?> GetUserByEmailAsync(string email)
         {
             Log.Information("Email for retrieving User from database: {@email}", email);
 
@@ -96,15 +96,15 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Warning("Mapping User Entity to User Model...");
 
-            return _userMapper.UserToUserModel(user);
+            return user is not null ? _userMapper.UserToUserModel(user) : null;
         }
 
         /// <summary>
         /// Implementation of method for getting User Entity without photo by username from database and mapping it into Model
         /// </summary>
         /// <param name="username">User's username</param>
-        /// <returns>Mapped User Model</returns>
-        public async Task<UserModel> GetUserByUsernameAsync(string username)
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public async Task<UserModel?> GetUserByUsernameAsync(string username)
         {
             Log.Information("Username for retrieving User from database: {@username}", username);
 
@@ -116,7 +116,7 @@ namespace CollabProj.Infrastructure.Services
 
             Log.Warning("Mapping User Entity to User Model...");
 
-            return _userMapper.UserToUserModel(user);
+            return user is not null ? _userMapper.UserToUserModel(user) : null;
         }
 
         /// <summary>

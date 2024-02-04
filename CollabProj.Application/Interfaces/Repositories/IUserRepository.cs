@@ -18,22 +18,22 @@ namespace CollabProj.Application.Interfaces.Repositories
         /// Method for getting user without photo by id from database
         /// </summary>
         /// <param name="id">User's Id</param>
-        /// <returns>User, which has this Id</returns>
-        public Task<User> GetByIdAsync(int id);
+        /// <returns>User, which has this Id or null if user wasn't found</returns>
+        public Task<User?> GetByIdAsync(int id);
 
         /// <summary>
         /// Method for getting user without photo by email from database
         /// </summary>
         /// <param name="email">User's email</param>
-        /// <returns>User, which has this Email</returns>
-        public Task<User> GetByEmailAsync(string email);
+        /// <returns>User, which has this Email or null if user wasn't found</returns>
+        public Task<User?> GetByEmailAsync(string email);
 
         /// <summary>
         /// Method for getting user without photo by username from database
         /// </summary>
         /// <param name="username">User's username</param>
-        /// <returns>User, which has this Username</returns>
-        public Task<User> GetByUsernameAsync(string username);
+        /// <returns>User, which has this Username or null if user wasn't found</returns>
+        public Task<User?> GetByUsernameAsync(string username);
 
         /// <summary>
         /// Method for getting user with photo by id from database

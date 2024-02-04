@@ -19,22 +19,22 @@ namespace CollabProj.Application.Interfaces.Services
         /// Method for getting User Entity without photo by id from database and mapping it into Model
         /// </summary>
         /// <param name="id">User's id</param>
-        /// <returns>Mapped User Model</returns>
-        public Task<UserModel> GetUserByIdAsync(int id);
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public Task<UserModel?> GetUserByIdAsync(int id);
 
         /// <summary>
         /// Method for getting User Entity without photo by email from database and mapping it into Model
         /// </summary>
         /// <param name="email">User's email</param>
-        /// <returns>Mapped User Model</returns>
-        public Task<UserModel> GetUserByEmailAsync(string email);
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public Task<UserModel?> GetUserByEmailAsync(string email);
 
         /// <summary>
         /// Method for getting User Entity without photo by username from database and mapping it into Model
         /// </summary>
         /// <param name="username">User's username</param>
-        /// <returns>Mapped User Model</returns>
-        public Task<UserModel> GetUserByUsernameAsync(string username);
+        /// <returns>Mapped User Model or null is user's not found</returns>
+        public Task<UserModel?> GetUserByUsernameAsync(string username);
 
         /// <summary>
         /// Method for getting User Entity with photo by id from database and mapping it into Model

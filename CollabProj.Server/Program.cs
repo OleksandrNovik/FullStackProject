@@ -23,9 +23,18 @@ Application.DependencyInjector(builder.Services);
 Presentation.DependencyInjector(builder.Services);
 Infrastructure.DependencyInjector(builder.Services);
 
+// Setting up database connection 
 builder.Services.AddDbContext<DbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDbConnection"))
 );
+
+// Setting up Redis Distributed Cache connection
+builder.Services.AddStackExchangeRedisCache(redisOptions =>
+{
+    string? connection = builder.Configuration.GetConnectionString("Redis");
+
+    redisOptions.Configuration = connection;
+});
 
 var app = builder.Build();
 
