@@ -11,8 +11,20 @@ namespace CollabProj.Infrastructure
     {
         public static void DependencyInjector(IServiceCollection service)
         {
+            Log.Debug("Injecting repositories...");
+
             service.AddScoped<IUserRepository, UserRepository>();
+
+            Log.Debug("Repositories successfully injected");
+
+            Log.Debug("Injecting services...");
+
             service.AddScoped<IUserService, UserService>();
+
+            service.AddScoped<ICodeGenerationService, CodeGenerationService>();
+
+            Log.Debug("Services successfully injected");
+
             Log.Debug("Added Dependencies for Infrastructure");
         }
     }
