@@ -33,7 +33,7 @@ namespace CollabProj.Server.Controllers
         /// <param name="model">User Model</param>
         /// <returns>Errors or Successful authentication of user</returns>
         [HttpPost]
-        public async Task<LogInErrorModel> Post([FromBody] UserModel model)
+        public async Task<LogInErrorModel> Authenticate([FromBody] UserModel model)
         {
             //TODO: Authentication
             Log.Information("POST request has been made for authentication of user");

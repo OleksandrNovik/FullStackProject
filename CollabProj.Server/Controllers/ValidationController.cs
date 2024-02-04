@@ -28,16 +28,16 @@ namespace CollabProj.Server.Controllers
         }
 
         /// <summary>
-        /// Method for getting user for validation
+        /// Method for getting user for validation and sending code to him
         /// </summary>
         /// <param name="id">User id</param>
         /// <returns>Errors or Successful adding of user</returns>
-        [HttpPost]
-        public async Task<UserModel> Post([FromBody] int id)
+        [HttpGet("{id}")]
+        public async Task<UserModel> GetValidation(int id)
         {
-            Log.Information("POST request has been made for user validation");
+            Log.Information("GET request has been made for user validation");
 
-            Log.Information("Id, retrieved from body: {@id}", id);
+            Log.Information("Id, retrieved from URL: {@id}", id);
 
             Log.Debug("Transferring data to User Service...");
 

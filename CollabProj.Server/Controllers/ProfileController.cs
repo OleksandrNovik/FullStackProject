@@ -29,18 +29,18 @@ namespace CollabProj.Server.Controllers
         /// <summary>
         /// Method to retrieve User Model data for a Profile page
         /// </summary>
-        /// <param name="id">User id</param>
+        /// <param name="username">User's username</param>
         /// <returns>User Model</returns>
-        [HttpGet("{id}")]
-        public async Task<UserModel> Get(int id)
+        [HttpGet("{username}")]
+        public async Task<UserModel> GetProfile(string username)
         {
             Log.Information("GET request has been made for user profile model");
 
-            Log.Information("Id, retrieved url: {@id}", id);
+            Log.Information("Username, retrieved url: {@username}", username);
 
             Log.Debug("Transferring data to User Service...");
 
-            var model = await _userService.GetUserWithPhotoByIdAsync(id);
+            var model = await _userService.GetUserWithPhotoByUsernameAsync(username);
 
             Log.Information("Model retrieved from service: {@model}", model);
 
@@ -48,26 +48,26 @@ namespace CollabProj.Server.Controllers
         }
 
         /// <summary>
-        /// Method for handling image change
+        /// Method for handling image change (update of image)
         /// </summary>
         /// <param name="file">Image</param>
-        /// <param name="id">User Id</param>
+        /// <param name="username">User's username</param>
         /// <returns>Completed Task</returns>
-        [HttpPost("[action]/{id}")]
-        public async Task ChangeImage([FromBody] IFormFile file, int id)
+        [HttpPatch("[action]/{username}")]
+        public async Task ChangeImage([FromBody] IFormFile file, string username)
         {
             //TODO: Add Image saving
         }
 
         /// <summary>
-        /// Method for handling username change
+        /// Method for handling user's data change
         /// </summary>
         /// <param name="model">Updated User Model</param>
         /// <returns>Completed Task</returns>
-        [HttpPost("[action]")]
+        [HttpPatch("[action]")]
         public async Task ChangeUsername([FromBody] UserModel model)
         {
-            Log.Information("POST request has been made for change of username");
+            Log.Information("PATCH request has been made for change of user's data");
 
             Log.Information("Model, retrieved from body: {@model}", model);
 

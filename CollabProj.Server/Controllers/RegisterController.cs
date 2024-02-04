@@ -33,7 +33,7 @@ namespace CollabProj.Server.Controllers
         /// <param name="model">User Model</param>
         /// <returns>Errors or Successful adding of user</returns>
         [HttpPost]
-        public async Task<RegisterErrorModel> Post([FromBody] UserModel model)
+        public async Task<RegisterErrorModel> Register([FromBody] UserModel model)
         {
             Log.Information("POST request has been made for registration of user");
 
