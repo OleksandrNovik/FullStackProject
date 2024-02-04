@@ -1,10 +1,10 @@
-﻿using CollabProj.Application.Interfaces.Services;
+﻿using CollabProj.Application.Interfaces.Services.Email;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
 using Serilog;
 
-namespace CollabProj.Infrastructure.Services
+namespace CollabProj.Infrastructure.Services.Email
 {
     /// <summary>
     /// Implementation of service for sending email

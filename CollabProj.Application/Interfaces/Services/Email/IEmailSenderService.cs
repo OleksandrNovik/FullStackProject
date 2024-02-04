@@ -1,7 +1,7 @@
-﻿namespace CollabProj.Application.Interfaces.Services
+﻿namespace CollabProj.Application.Interfaces.Services.Email
 {
     /// <summary>
-    /// Interface for sending email
+    /// Service Interface for sending email
     /// </summary>
     public interface IEmailSenderService
     {

@@ -1,5 +1,7 @@
-﻿using CollabProj.Application.Interfaces.Repositories;
+﻿using CollabProj.Application.Interfaces.Services.Email;
+using CollabProj.Application.Interfaces.Repositories;
 using CollabProj.Application.Interfaces.Services;
+using CollabProj.Infrastructure.Services.Email;
 using CollabProj.Infrastructure.Repositories;
 using CollabProj.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,8 @@ namespace CollabProj.Infrastructure
             service.AddScoped<IUserService, UserService>();
 
             service.AddScoped<IEmailSenderService, EmailSenderService>();
+
+            service.AddScoped<IEmailTemplateService, EmailTemplateService>();
 
             service.AddScoped<ICodeGenerationService, CodeGenerationService>();
 

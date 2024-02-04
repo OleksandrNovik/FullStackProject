@@ -1,7 +1,7 @@
 ﻿namespace CollabProj.Application.Interfaces.Services
 {
     /// <summary>
-    /// Interface for Code Generation Service
+    /// Service Interface for Code Generation Service
     /// </summary>
     public interface ICodeGenerationService
     {
