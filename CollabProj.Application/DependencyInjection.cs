@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace CollabProj.Application
 {
@@ -7,7 +8,7 @@ namespace CollabProj.Application
         public static void DependencyInjector(IServiceCollection service)
         {
             //TODO: Add Dependencies for Application
-            Console.WriteLine("Added Dependencies for Application");
+            Log.Debug("Added Dependencies for Application");
         }
     }
 }
