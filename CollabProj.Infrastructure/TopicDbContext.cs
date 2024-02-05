@@ -44,6 +44,7 @@ namespace CollabProj.Infrastructure
         {
             var library = new TopicLibrary()
             {
+                //TODO: get this fake user out of here
                 Author = new FakeUser(),
                 Id = 1,
                 Title = "Sample topic library",

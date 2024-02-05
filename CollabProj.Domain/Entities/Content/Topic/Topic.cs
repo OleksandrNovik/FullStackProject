@@ -38,6 +38,6 @@ namespace CollabProj.Domain.Entities.Content
         /// <summary>
         /// Topic has its content, which consists of pieces with given type and other information
         /// </summary>
-        public List<ContentPiece> TopicContent { get; set; }
+        public List<ContentPiece>? TopicContent { get; set; }
     }
 }
