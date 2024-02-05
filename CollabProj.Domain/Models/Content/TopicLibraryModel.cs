@@ -6,11 +6,11 @@ namespace CollabProj.Domain.Models.Content
     //TODO: documentation
     public class TopicLibraryModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Title { get; set; }
         public FakeUser? Author { get; set; }
         public ContentStatisticsModel Statistics { get; set; }
-        public List<TopicModel> Topics { get; set; }
+        public List<TopicModel>? Topics { get; set; }
 
     }
 }
