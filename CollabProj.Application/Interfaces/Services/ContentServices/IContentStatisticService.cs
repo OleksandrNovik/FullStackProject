@@ -11,7 +11,6 @@
         /// </summary>
         /// <param name="Id"> Id of statistics </param>
         /// <returns></returns>
-        /// TODO: create more reliable system of views
         public Task UpdateViewsAsync(int Id);
 
         /// <summary>

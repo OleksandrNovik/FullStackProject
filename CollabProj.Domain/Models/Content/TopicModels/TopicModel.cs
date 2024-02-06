@@ -5,7 +5,8 @@
     {
         public int? Id { get; set; }
         public string Title { get; set; }
-        public ContentStatisticsModel Statistics { get; set; }
+        public ContentStatisticsModel? Statistics { get; set; }
         public List<ContentPieceModel>? Content { get; set; }
+        public bool? IsLiked { get; set; }
     }
 }

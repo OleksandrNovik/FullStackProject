@@ -39,6 +39,6 @@ namespace CollabProj.Domain.Entities.Content
         /// <summary>
         /// Topic library can have topics in it
         /// </summary>
-        public List<Topic>? Topics { get; set; }
+        public ICollection<Topic>? Topics { get; set; }
     }
 }

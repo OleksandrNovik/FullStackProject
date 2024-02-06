@@ -9,8 +9,8 @@ namespace CollabProj.Domain.Models.Content
         public int? Id { get; set; }
         public string Title { get; set; }
         public FakeUser? Author { get; set; }
-        public ContentStatisticsModel Statistics { get; set; }
+        public ContentStatisticsModel? Statistics { get; set; }
         public List<TopicModel>? Topics { get; set; }
-
+        public bool? IsLiked { get; set; }
     }
 }

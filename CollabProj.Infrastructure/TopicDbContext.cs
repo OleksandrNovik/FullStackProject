@@ -50,7 +50,8 @@ namespace CollabProj.Infrastructure
                 Title = "Sample topic library",
                 Statistics = new ContentStatistics()
                 {
-                    Id = 1,  Likes = 50,  Views = 130,  CreationDate = DateTime.Now, LastViewDate = DateTime.Now,
+                    Id = 1,  CreationDate = DateTime.Now, LastViewDate = DateTime.Now, 
+                    Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
                 }
             };
             var topics = new List<Topic>()
@@ -62,7 +63,8 @@ namespace CollabProj.Infrastructure
                     TopicLibrary = library,
                     Statistics = new ContentStatistics()
                     {
-                        Id = 2, Likes = 50, Views = 123, CreationDate = DateTime.Now, LastViewDate = DateTime.Now,
+                        Id = 2, CreationDate = DateTime.Now, LastViewDate = DateTime.Now,
+                        Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
                     },
                     TopicContent = new List<ContentPiece>()
                     {
@@ -87,7 +89,8 @@ namespace CollabProj.Infrastructure
                     TopicLibrary = library,
                     Statistics = new ContentStatistics()
                     {
-                        Id = 3, CreationDate= DateTime.Now, LastViewDate= DateTime.Now, Likes = 32, Views = 135
+                        Id = 3, CreationDate= DateTime.Now, LastViewDate= DateTime.Now,
+                        Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
                     },
                     TopicContent = new List<ContentPiece>()
                     {
@@ -114,12 +117,15 @@ namespace CollabProj.Infrastructure
 
             foreach (var topic in topics)
             {
-                topic.TopicContent.ForEach(content => content.Topic = topic);
+                foreach(var content in topic.TopicContent)
+                {
+                    content.Topic = topic;
+                }
                 statistics.Add(topic.Statistics);
             }
             library.Topics = topics;
 
-            var contentPieces = topics[0].TopicContent;
+            var contentPieces = topics[0].TopicContent.ToList();
 
             for (int i = 1; i < topics.Count; i++) 
             {

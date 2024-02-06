@@ -18,20 +18,6 @@ namespace CollabProj.Domain.Entities.Content.Statistics
         public int Id { get; set; }
 
         /// <summary>
-        /// Number of Likes at this content
-        /// </summary>
-        [Required]
-        [Column("likes")]
-        public int Likes { get; set; } = 0;
-
-        /// <summary>
-        /// Number of views
-        /// </summary>
-        [Required]
-        [Column("views")]
-        public int Views { get; set; } = 0;
-
-        /// <summary>
         /// When this item was created
         /// </summary>
         [Required]
@@ -44,5 +30,15 @@ namespace CollabProj.Domain.Entities.Content.Statistics
         [Required]
         [Column("lastViewDate")]
         public DateTime LastViewDate { get; set; }
+
+        /// <summary>
+        /// Each content can have views from users
+        /// </summary>
+        public ICollection<FakeUser> Viewed { get; set; }
+
+        /// <summary>
+        /// List of users who liked this content
+        /// </summary>
+        public ICollection<FakeUser> Liked { get; set; }
     }
 }

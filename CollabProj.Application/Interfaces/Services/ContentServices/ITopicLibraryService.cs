@@ -36,6 +36,14 @@ namespace CollabProj.Application.Interfaces.Services.ContentServices
         public Task<TopicLibraryModel?> GetLibraryByIdAsync(int id);
 
         /// <summary>
+        /// Checks if current user can edit topic library
+        /// </summary>
+        /// <param name="username"> Username of current user </param>
+        /// <param name="libraryId"> Id of topic library </param>
+        /// <returns> true if user is author, so he has permission to edit content, false if user can only read library</returns>
+        public Task<bool> IsAuthorAsync(string username, int libraryId);
+
+        /// <summary>
         /// Method to select first 'number' topic libraries
         /// </summary>
         /// <param name="number"> Number of libraries to select (selects all if not provided) </param>
@@ -66,8 +74,16 @@ namespace CollabProj.Application.Interfaces.Services.ContentServices
         /// <summary>
         /// Selects each topic library of certain author
         /// </summary>
-        /// <param name="authorId"> Id of author </param>
+        /// <param name="authorName"> Nickname of author </param>
         /// <returns> List of libraries that this author created </returns>
-        public Task<List<TopicLibraryModel>> SelectAllByAuthorAsync(int authorId);
+        public Task<List<TopicLibraryModel>> SelectAllByAuthorAsync(string authorName);
+
+        /// <summary>
+        /// Selects all liked topic libraries by current user
+        /// </summary>
+        /// <param name="username"> Nickname of current user </param>
+        /// <returns> List of liked libraries </returns>
+        public Task<List<TopicLibraryModel>> SelectAllLikedAsync(string username);
+
     }
 }
