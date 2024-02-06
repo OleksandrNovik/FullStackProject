@@ -28,11 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CollabProj.Application\CollabProj.Application.csproj" />
     <ProjectReference Include="..\collabproj.client\collabproj.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\CollabProj.Infrastructure\CollabProj.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
