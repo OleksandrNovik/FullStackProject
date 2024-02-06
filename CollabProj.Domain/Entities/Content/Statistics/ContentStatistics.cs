@@ -34,11 +34,11 @@ namespace CollabProj.Domain.Entities.Content.Statistics
         /// <summary>
         /// Each content can have views from users
         /// </summary>
-        public ICollection<FakeUser> Viewed { get; set; }
+        public ICollection<User.User> Viewed { get; set; }
 
         /// <summary>
         /// List of users who liked this content
         /// </summary>
-        public ICollection<FakeUser> Liked { get; set; }
+        public ICollection<User.User> Liked { get; set; }
     }
 }

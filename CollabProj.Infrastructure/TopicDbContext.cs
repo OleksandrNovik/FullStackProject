@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using CollabProj.Domain.Entities.Content;
 using CollabProj.Domain.Entities.Content.Statistics;
-using Microsoft.EntityFrameworkCore;
 
 namespace CollabProj.Infrastructure
 {
@@ -75,13 +74,13 @@ namespace CollabProj.Infrastructure
             var library = new TopicLibrary()
             {
                 //TODO: get this fake user out of here
-                Author = new FakeUser(),
+                Author = new User(),
                 Id = 1,
                 Title = "Sample topic library",
                 Statistics = new ContentStatistics()
                 {
                     Id = 1,  CreationDate = DateTime.Now, LastViewDate = DateTime.Now, 
-                    Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
+                    Liked = new List<User>(), Viewed = new List<User>()
                 }
             };
             var topics = new List<Topic>()
@@ -94,7 +93,7 @@ namespace CollabProj.Infrastructure
                     Statistics = new ContentStatistics()
                     {
                         Id = 2, CreationDate = DateTime.Now, LastViewDate = DateTime.Now,
-                        Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
+                        Liked = new List<User>(), Viewed = new List<User>()
                     },
                     TopicContent = new List<ContentPiece>()
                     {
@@ -120,7 +119,7 @@ namespace CollabProj.Infrastructure
                     Statistics = new ContentStatistics()
                     {
                         Id = 3, CreationDate= DateTime.Now, LastViewDate= DateTime.Now,
-                        Liked = new List<FakeUser>(), Viewed = new List<FakeUser>()
+                        Liked = new List<User>(), Viewed = new List<User>()
                     },
                     TopicContent = new List<ContentPiece>()
                     {

@@ -1,4 +1,5 @@
 ﻿using CollabProj.Domain.Entities.Content;
+using CollabProj.Domain.Entities.User;
 
 namespace CollabProj.Application.Interfaces.Repositories.ContentRepositories
 {
@@ -12,7 +13,7 @@ namespace CollabProj.Application.Interfaces.Repositories.ContentRepositories
         /// </summary>
         /// <param name="libraryId"> Id of topic library that is checked</param>
         /// <returns> Author of topic library </returns>
-        public Task<FakeUser> GetAuthorAsync(int libraryId);
+        public Task<User> GetAuthorAsync(int libraryId);
 
         /// <summary>
         /// Gets number of topic libraries but sorted by date, so recent are first

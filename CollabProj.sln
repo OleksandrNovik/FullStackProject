@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollabProj.Server", "CollabProj.Server\CollabProj.Server.csproj", "{72DC91E2-568C-4725-BE51-264B112A09FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollabProj.Server", "CollabProj.Server\CollabProj.Server.csproj", "{72DC91E2-568C-4725-BE51-264B112A09FE}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "collabproj.client", "collabproj.client\collabproj.client.esproj", "{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollabProj.Application", "CollabProj.Application\CollabProj.Application.csproj", "{34F81FFC-881E-4566-AB0F-69292775AC1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollabProj.Domain", "CollabProj.Domain\CollabProj.Domain.csproj", "{07D0A736-F53E-4B8C-9147-F83E5946AA43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollabProj.Infrastructure", "CollabProj.Infrastructure\CollabProj.Infrastructure.csproj", "{9662E396-54D9-4411-8DFF-9CBCCE0DEB20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,18 @@ Global
 		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20E8AF1A-D8E1-43DC-9BCA-22DC04ED8974}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{34F81FFC-881E-4566-AB0F-69292775AC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F81FFC-881E-4566-AB0F-69292775AC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F81FFC-881E-4566-AB0F-69292775AC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F81FFC-881E-4566-AB0F-69292775AC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D0A736-F53E-4B8C-9147-F83E5946AA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D0A736-F53E-4B8C-9147-F83E5946AA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D0A736-F53E-4B8C-9147-F83E5946AA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D0A736-F53E-4B8C-9147-F83E5946AA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9662E396-54D9-4411-8DFF-9CBCCE0DEB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9662E396-54D9-4411-8DFF-9CBCCE0DEB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9662E396-54D9-4411-8DFF-9CBCCE0DEB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9662E396-54D9-4411-8DFF-9CBCCE0DEB20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
