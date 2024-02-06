@@ -138,5 +138,4 @@ namespace CollabProj.Infrastructure
             modelBuilder.Entity<ContentStatistics>().HasData(statistics);
         }
     }
-
 }

@@ -1,6 +1,6 @@
 ﻿namespace CollabProj.Domain.Models.Content
 {
-    //TODO: documentation
+    //TODO: documentation 1
     public class ContentStatisticsModel
     {
         public int Likes { get; set; }

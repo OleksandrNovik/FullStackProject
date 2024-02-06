@@ -39,5 +39,6 @@
         /// </summary>
         /// <returns> List of entities found in db </returns>
         public Task<List<T>> GetAllAsync();
+
     }
 }

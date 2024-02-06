@@ -13,5 +13,6 @@ namespace CollabProj.Application.Interfaces.Repositories.ContentRepositories
         /// <param name="data"> New statistics data </param>
         /// <returns> Completed Task </returns>
         public Task UpdateStatistics(ContentStatistics data);
+
     }
 }

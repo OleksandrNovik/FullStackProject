@@ -56,4 +56,5 @@ namespace CollabProj.Application.Interfaces.Repositories.ContentRepositories
     {
         Date, Popularity, Likes
     }
+
 }
