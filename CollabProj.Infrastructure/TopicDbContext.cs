@@ -18,6 +18,9 @@ namespace CollabProj.Infrastructure
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // If needed we seed database with test data to make it easier work with data
+            // We use extension method for that
+            modelBuilder.Seed();
             //Binding User and UserPhoto using modelBuilder
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserPhoto)
@@ -42,6 +45,16 @@ namespace CollabProj.Infrastructure
 
         /// <summary>
         /// Database Set of User Photos
+        /// </summary>
+        public DbSet<UserPhoto> UserPhotos { get; set; }
+        
+        /// <summary>
+        /// Database set of topic libraries
+        /// </summary>
+        public DbSet<TopicLibrary> TopicLibraries { get; set; }
+
+        /// <summary>
+        /// Database set of topics
         /// </summary>
         public DbSet<Topic> Topics { get; set; }
 
@@ -155,5 +168,4 @@ namespace CollabProj.Infrastructure
             modelBuilder.Entity<ContentStatistics>().HasData(statistics);
         }
     }
-
 }
