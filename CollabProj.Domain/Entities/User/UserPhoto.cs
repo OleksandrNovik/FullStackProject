@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CollabProj.Domain.Entities.User
+namespace CollabProj.Domain.Entities.UserRelated
 {
     /// <summary>
     /// User photo entity.

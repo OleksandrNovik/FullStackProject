@@ -1,5 +1,5 @@
 ﻿using CollabProj.Application.Interfaces.Repositories;
-using CollabProj.Domain.Entities.User;
+using CollabProj.Domain.Entities.UserRelated;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

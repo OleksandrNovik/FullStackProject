@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CollabProj.Domain.Entities.UserRelated;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CollabProj.Domain.Entities.Content.Statistics
@@ -34,11 +35,11 @@ namespace CollabProj.Domain.Entities.Content.Statistics
         /// <summary>
         /// Each content can have views from users
         /// </summary>
-        public ICollection<User.User> Viewed { get; set; }
+        public ICollection<User> Viewed { get; set; }
 
         /// <summary>
         /// List of users who liked this content
         /// </summary>
-        public ICollection<User.User> Liked { get; set; }
+        public ICollection<User> Liked { get; set; }
     }
 }

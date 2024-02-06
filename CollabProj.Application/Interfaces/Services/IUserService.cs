@@ -1,4 +1,4 @@
-﻿using CollabProj.Domain.Entities.User;
+﻿using CollabProj.Domain.Entities.UserRelated;
 using CollabProj.Domain.Models.User;
 
 namespace CollabProj.Application.Interfaces.Services

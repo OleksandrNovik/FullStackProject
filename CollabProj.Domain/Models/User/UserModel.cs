@@ -1,4 +1,4 @@
-﻿using CollabProj.Domain.Entities.User;
+﻿using CollabProj.Domain.Entities.UserRelated;
 using System;
 using System.Collections.Generic;
 using System.Linq;

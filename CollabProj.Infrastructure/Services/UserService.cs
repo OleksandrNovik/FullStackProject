@@ -1,6 +1,6 @@
 ﻿using CollabProj.Application.Interfaces.Repositories;
 using CollabProj.Application.Interfaces.Services;
-using CollabProj.Domain.Entities.User;
+using CollabProj.Domain.Entities.UserRelated;
 using CollabProj.Domain.Models.User;
 using CollabProj.Infrastructure.Mappers.UserRelated;
 using Serilog;

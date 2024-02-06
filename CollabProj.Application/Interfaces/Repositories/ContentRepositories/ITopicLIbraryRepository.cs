@@ -1,5 +1,5 @@
 ﻿using CollabProj.Domain.Entities.Content;
-using CollabProj.Domain.Entities.User;
+using CollabProj.Domain.Entities.UserRelated;
 
 namespace CollabProj.Application.Interfaces.Repositories.ContentRepositories
 {

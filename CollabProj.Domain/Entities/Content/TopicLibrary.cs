@@ -29,7 +29,7 @@ namespace CollabProj.Domain.Entities.Content
         /// Author of those topics
         /// </summary>
         //TODO: Replace empty User with entity
-        public User.User Author { get; set; }
+        public UserRelated.User Author { get; set; }
 
         /// <summary>
         /// Statistics for an entire library (summary if you liked or not all of topics)

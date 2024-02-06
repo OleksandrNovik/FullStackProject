@@ -1,4 +1,4 @@
-﻿using CollabProj.Domain.Entities.User;
+﻿using CollabProj.Domain.Entities.UserRelated;
 using Microsoft.EntityFrameworkCore;
 using CollabProj.Domain.Entities.Content;
 using CollabProj.Domain.Entities.Content.Statistics;

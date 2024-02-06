@@ -1,4 +1,4 @@
-﻿using CollabProj.Domain.Entities.User;
+﻿using CollabProj.Domain.Entities.UserRelated;
 
 namespace CollabProj.Application.Interfaces.Repositories
 {
