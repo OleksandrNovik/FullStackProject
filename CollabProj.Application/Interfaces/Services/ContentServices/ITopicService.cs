@@ -34,6 +34,5 @@ namespace CollabProj.Application.Interfaces.Services.ContentServices
         /// <param name="id"> Id of topic </param>
         /// <returns> Topic if it was found </returns>
         public Task<TopicModel?> GetTopicByIdAsync(int id);
-
     }
 }

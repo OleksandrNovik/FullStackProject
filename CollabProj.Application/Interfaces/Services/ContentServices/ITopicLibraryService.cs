@@ -84,7 +84,5 @@ namespace CollabProj.Application.Interfaces.Services.ContentServices
         /// <param name="username"> Nickname of current user </param>
         /// <returns> List of liked libraries </returns>
         public Task<List<TopicLibraryModel>> SelectAllLikedAsync(string username);
-
-
     }
 }

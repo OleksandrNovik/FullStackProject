@@ -3,7 +3,7 @@ using CollabProj.Domain.Models.Content.TopicModels;
 
 namespace CollabProj.Domain.Models.Content
 {
-    //TODO: documentation 1
+    //TODO: documentation
     public class TopicLibraryModel
     {
         public int? Id { get; set; }

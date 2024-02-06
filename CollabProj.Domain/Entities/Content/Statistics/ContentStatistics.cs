@@ -40,6 +40,5 @@ namespace CollabProj.Domain.Entities.Content.Statistics
         /// List of users who liked this content
         /// </summary>
         public ICollection<FakeUser> Liked { get; set; }
-
     }
 }

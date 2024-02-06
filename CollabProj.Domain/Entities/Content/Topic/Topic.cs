@@ -39,6 +39,5 @@ namespace CollabProj.Domain.Entities.Content
         /// Topic has its content, which consists of pieces with given type and other information
         /// </summary>
         public ICollection<ContentPiece> TopicContent { get; set; }
-
     }
 }

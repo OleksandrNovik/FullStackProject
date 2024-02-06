@@ -1,4 +1,6 @@
-﻿using CollabProj.Domain.Entities.Content;
+﻿using CollabProj.Domain.Entities.User;
+using Microsoft.EntityFrameworkCore;
+using CollabProj.Domain.Entities.Content;
 using CollabProj.Domain.Entities.Content.Statistics;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,23 +10,38 @@ namespace CollabProj.Infrastructure
     {
         public TopicDbContext(DbContextOptions<TopicDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            if (Database.EnsureCreated())
+            {
+                //TODO: Add db seeding 
+                Console.WriteLine("Hello world");
+            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // If needed we seed database with test data to make it easier work with data
-            // We use extention method for that
-            modelBuilder.Seed();
+            //Binding User and UserPhoto using modelBuilder
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.UserPhoto)
+                .WithOne(up => up.User)
+                .HasForeignKey<UserPhoto>(up => up.Id);
+
+            //Implementation of password hashing
+            modelBuilder.Entity<User>()
+                .Property(u => u.Password)
+                .HasConversion(
+                    password => BCrypt.Net.BCrypt.HashPassword(password),
+                    hashedPassword => hashedPassword
+                );
+
             base.OnModelCreating(modelBuilder);
         }
 
         /// <summary>
-        /// Database set of topic libraries
+        /// Database Set of Users
         /// </summary>
-        public DbSet<TopicLibrary> TopicLibraries { get; set; }
+        public DbSet<User> Users { get; set; }
 
         /// <summary>
-        /// Database set of topics
+        /// Database Set of User Photos
         /// </summary>
         public DbSet<Topic> Topics { get; set; }
 
@@ -138,4 +155,5 @@ namespace CollabProj.Infrastructure
             modelBuilder.Entity<ContentStatistics>().HasData(statistics);
         }
     }
+
 }

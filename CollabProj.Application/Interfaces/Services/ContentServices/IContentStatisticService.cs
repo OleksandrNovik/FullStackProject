@@ -21,6 +21,5 @@
         /// <param name="likes"> New number of likes </param>
         /// <returns> Completed Task</returns>
         public Task UpdateLikesAsync(int Id, int likes);
-
     }
 }

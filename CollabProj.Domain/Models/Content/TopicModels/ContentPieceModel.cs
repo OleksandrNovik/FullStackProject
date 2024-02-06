@@ -2,7 +2,7 @@
 
 namespace CollabProj.Domain.Models.Content.TopicModels
 {
-    //TODO: documentation 1
+    //TODO: documentation
     public class ContentPieceModel
     {
         public int Id { get; set; }

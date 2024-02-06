@@ -44,5 +44,4 @@ namespace CollabProj.Domain.Entities.Content
         Text,
         Code
     }
-
 }
